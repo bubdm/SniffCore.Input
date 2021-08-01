@@ -1,0 +1,111 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:internal="clr-namespace:SniffCore.Input.Internal"
+                    xmlns:input="clr-namespace:SniffCore.Input">
+
+    <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3" />
+    <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA" />
+    <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5" />
+
+    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    <internal:BooleanToVisibilityInvertedConverter x:Key="BooleanToVisibilityInvertedConverter" />
+
+    <Style TargetType="{x:Type input:TimeBox}">
+        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" />
+        <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="AllowDrop" Value="true" />
+        <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst" />
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type input:TimeBox}">
+                    <Border x:Name="border" Background="{TemplateBinding Background}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}" SnapsToDevicePixels="True">
+                        <DockPanel>
+                            <StackPanel DockPanel.Dock="Right" VerticalAlignment="Center" Focusable="False"
+                                        x:Name="upDownButtons">
+                                <input:UpDownButton AutomationProperties.AutomationId="CUI_UpButton" Direction="Up"
+                                                    x:Name="PART_UpButton" IsEnabled="{TemplateBinding IsEnabled}"
+                                                    Focusable="False" />
+                                <input:UpDownButton AutomationProperties.AutomationId="CUI_DownButton" Direction="Down"
+                                                    x:Name="PART_DownButton" IsEnabled="{TemplateBinding IsEnabled}"
+                                                    Focusable="False" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <input:NumberBox AutomationProperties.AutomationId="CUI_HoursTextBox"
+                                                 x:Name="PART_HourBox"
+                                                 NumberType="Int"
+                                                 Minimum="0"
+                                                 Maximum="23"
+                                                 DefaultNumber="0"
+                                                 UpDownBehavior="Arrows"
+                                                 Step="1"
+                                                 NumberSelectionBehavior="OnFocusAndUpDown"
+                                                 LostFocusBehavior="{input:LostFocusBehavior PlaceDefaultNumber, FormatText={}{0:D2}}"
+                                                 BorderThickness="0"
+                                                 Background="{TemplateBinding Background}"
+                                                 Foreground="{TemplateBinding Foreground}" />
+                                <TextBlock Text=":" />
+                                <input:NumberBox AutomationProperties.AutomationId="CUI_MinutesTextBox"
+                                                 x:Name="PART_MinuteBox"
+                                                 NumberType="Int"
+                                                 Minimum="0"
+                                                 Maximum="59"
+                                                 DefaultNumber="0"
+                                                 UpDownBehavior="Arrows"
+                                                 Step="1"
+                                                 NumberSelectionBehavior="OnFocusAndUpDown"
+                                                 LostFocusBehavior="{input:LostFocusBehavior PlaceDefaultNumber, FormatText={}{0:D2}}"
+                                                 BorderThickness="0"
+                                                 Background="{TemplateBinding Background}"
+                                                 Foreground="{TemplateBinding Foreground}" />
+                                <StackPanel Orientation="Horizontal" x:Name="longFormat">
+                                    <TextBlock Text=":" />
+                                    <input:NumberBox AutomationProperties.AutomationId="CUI_SecondsTextBox"
+                                                     x:Name="PART_SecondBox"
+                                                     NumberType="Int"
+                                                     Minimum="0"
+                                                     Maximum="59"
+                                                     DefaultNumber="0"
+                                                     UpDownBehavior="Arrows"
+                                                     Step="1"
+                                                     NumberSelectionBehavior="OnFocusAndUpDown"
+                                                     LostFocusBehavior="{input:LostFocusBehavior PlaceDefaultNumber, FormatText={}{0:D2}}"
+                                                     BorderThickness="0"
+                                                     Background="{TemplateBinding Background}"
+                                                     Foreground="{TemplateBinding Foreground}" />
+                                </StackPanel>
+                            </StackPanel>
+                        </DockPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Opacity" TargetName="border" Value="0.56" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="BorderBrush" TargetName="border"
+                                    Value="{StaticResource TextBox.MouseOver.Border}" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="true">
+                            <Setter Property="BorderBrush" TargetName="border"
+                                    Value="{StaticResource TextBox.Focus.Border}" />
+                        </Trigger>
+                        <Trigger Property="TimeFormat" Value="Short">
+                            <Setter TargetName="longFormat" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <Trigger Property="HasUpDownButtons" Value="False">
+                            <Setter TargetName="upDownButtons" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
