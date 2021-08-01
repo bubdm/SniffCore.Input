@@ -54,6 +54,17 @@
                                           Padding="2"
                                           Margin="0,10,0,0" />
 
+            <controls:NumberBox NumberType="Double"
+                                Minimum="10"
+                                Maximum="100" 
+                                DefaultNumber="50"
+                                LostFocusBehavior="{controls:LostFocusBehavior PlaceDefaultNumber}"
+                                HasCheckBox="True"
+                                CheckBoxBehavior="EnableIfChecked"
+                                HasResetButton="True"
+                                UpDownBehavior="ArrowsAndButtons"
+                                Padding="2"
+                                Margin="0,10,0,0" />
         </StackPanel>
     </Grid>
 

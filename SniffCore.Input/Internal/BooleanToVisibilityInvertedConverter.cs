@@ -8,7 +8,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
-namespace SniffCore.Input
+namespace SniffCore.Input.Internal
 {
     internal sealed class BooleanToVisibilityInvertedConverter : IValueConverter
     {

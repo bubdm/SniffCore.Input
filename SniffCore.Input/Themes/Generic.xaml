@@ -4,6 +4,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/SniffCore.Input;component/Themes/EnhancedPasswordBox.xaml" />
         <ResourceDictionary Source="/SniffCore.Input;component/Themes/EnhancedTextBox.xaml" />
+        <ResourceDictionary Source="/SniffCore.Input;component/Themes/NumberBox.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>
