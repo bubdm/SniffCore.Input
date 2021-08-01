@@ -1,0 +1,60 @@
+﻿<Window x:Class="Tryout.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="http://sniffcore.com"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        Height="450"
+        Width="800">
+    
+    <Grid>
+        <StackPanel Margin="10" HorizontalAlignment="Left" Width="200">
+            <controls:EnhancedTextBox InfoText="Required"
+                                      AllowedDropType="Files"
+                                      Separator=";"
+                                      InfoAppearance="OnEmpty"
+                                      InfoTextMargin="4,2"
+                                      VerticalContentAlignment="Center"
+                                      Padding="2"
+                                      Margin="0,10,0,0">
+                <controls:EnhancedTextBox.FirstControl>
+                    <Button Content="First" />
+                </controls:EnhancedTextBox.FirstControl>
+                <controls:EnhancedTextBox.SecondControl>
+                    <Button Content="Second" />
+                </controls:EnhancedTextBox.SecondControl>
+            </controls:EnhancedTextBox>
+
+            <controls:BrowseTextBox InfoText="Required"
+                                    AllowedDropType="Files"
+                                    Separator=";"
+                                    InfoAppearance="OnEmpty"
+                                    InfoTextMargin="4,2"
+                                    VerticalContentAlignment="Center"
+                                    Padding="2"
+                                    ShowBrowseButton="True"
+                                    BrowseCommand="{Binding BrowseCommand}"
+                                    Margin="0,10,0,0" />
+
+            <controls:SearchTextBox InfoText="Search"
+                                    ShowSearchButton="True"
+                                    InfoAppearance="OnEmpty"
+                                    InfoTextMargin="4,2"
+                                    VerticalContentAlignment="Center"
+                                    Padding="2"
+                                    Margin="0,10,0,0" />
+
+            <controls:EnhancedPasswordBox Password="{Binding Password}"
+                                          InfoText="Required"
+                                          InfoAppearance="OnEmpty"
+                                          InfoTextMargin="4,2"
+                                          VerticalContentAlignment="Center"
+                                          Padding="2"
+                                          Margin="0,10,0,0" />
+
+        </StackPanel>
+    </Grid>
+
+</Window>
